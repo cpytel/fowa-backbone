@@ -1,0 +1,21 @@
+<div class="index">
+  <ul class="tasks">
+    <% locals[:tasks].each do |task| %>
+      <li>
+        <a href="/tasks/<%= task['id'] %>"><%= task['title'] %></a>
+      </li>
+    <% end %>
+  </ul>
+
+  <form id="new_task" action="tasks.json">
+    <ol class="inputs">
+      <li>
+        <label for="title_input">Title</label>
+        <input type="text" name="title" id="title_input"/>
+      </li>
+    </ol>
+    <ol class="buttons">
+      <input type="submit" value="Create Task"/>
+    </ol>
+  </form>
+</div>
