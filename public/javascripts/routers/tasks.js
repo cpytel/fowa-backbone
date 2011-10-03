@@ -5,7 +5,6 @@ App.Routers.Tasks = Backbone.Router.extend({
   },
 
   index: function() {
-    console.log("index");
     var tasksView = new App.Views.Tasks();
 
     $("body").html(tasksView.render().el);
