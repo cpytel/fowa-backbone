@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'json'
 
 configure do
   set :method_override, true
@@ -16,9 +17,10 @@ get '/' do
 end
 
 post '/tasks' do
-  params['id'] = rand(10000);
-  settings.tasks << params
-  "<li><a href='/tasks/#{params['id']}'>#{params['title']}</a></li>"
+  task = JSON.parse(request.body.read)
+  task['id'] = rand(10000);
+  settings.tasks << task
+  task.to_json
 end
 
 get "/tasks/:id" do
