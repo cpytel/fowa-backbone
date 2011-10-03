@@ -27,7 +27,6 @@ end
 
 delete "/tasks/:id" do
   settings.tasks.reject! { |task| task["id"] == params[:id].to_i }
-  p settings.tasks
   ""
 end
 
