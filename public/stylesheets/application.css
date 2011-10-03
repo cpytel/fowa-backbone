@@ -5,3 +5,20 @@ body {
 .users li {
 
 }
+
+.task {
+  width: 500px;
+}
+
+a.back {
+  color: black;
+}
+
+a.delete {
+  color: red;
+  float: right;
+}
+
+h1 {
+  margin-top: 15px;
+}
