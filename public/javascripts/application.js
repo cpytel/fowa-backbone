@@ -11,5 +11,40 @@ $(function() {
     return false;
   });
 
-  $(".tasks ul a")
+  $(".tasks li a").live("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    $.get($(this).prop('href'), null, function(data) {
+      $(".index").hide().after(data);
+    });
+
+    return false;
+  });
+
+  $("a.back").live("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    $(".task").remove();
+    $(".index").show();
+
+    return false;
+  });
+
+  $("a.delete").live("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    $.ajax($(this).prop('href'), {
+      data: { "_method": "DELETE" },
+      success: function(data) {
+        $(".task").remove();
+        $(".index").show();
+      },
+      type: "POST"
+    });
+
+    return false;
+  });
 });
